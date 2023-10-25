@@ -1,0 +1,11 @@
+version: "3"
+services:
+  kino-premium:
+    container_name: kino-premium
+    hostname: kino-premium
+    build: .
+    env_file: .env
+    ports:
+      - "10000:10000"
+    volumes:
+      - ./src:/app/src
