@@ -17,7 +17,7 @@ const Sidebar = () => {
         <div className="flex bg-[#1c2a39]">
             <aside
                 className={` ${
-                open ? "w-72" : "w-20 "
+                open ? "w-64" : "w-20 "
                 } bg-[#11101D] h-screen p-5  pt-8 relative duration-300`}
             >
                 <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#66acff]
@@ -51,7 +51,7 @@ const Sidebar = () => {
                                 className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center gap-x-4 mt-4 ${isActive ? 'bg-gray-300/10' : ''}`}
                             >
                                 {Menu.component}
-                                <span className={`${!open && "hidden"} origin-left duration-400 text-base ease-linear`}>
+                                <span className={`${!open && "hidden"} origin-left duration-400 text-xl ease-linear`}>
                                     {Menu.title}
                                 </span>
                             </li>
