@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Dashboard from "./Dashboard";
+import Books from "./Books";
+import Analytics from "./Analytics";
+import PageNotFound from "./PageNotFound";
+import Cookies from "universal-cookie";
+
+import {
+	createBrowserRouter,
+	RouterProvider,
+	Route
+  } from "react-router-dom"
+
+import Sidebar from "./components/Sidebar";
+
+// const cookies = new Cookies();
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	const router = createBrowserRouter([{
+		path: "/",
+		element: <Sidebar/>,
+		errorElement: <PageNotFound/>,
+		children: [
+			{ path: "/dashboard", element: <Dashboard/> },
+			{ path: "/books", element: <Books/> },
+			{ path: "/analytics", element: <Analytics/> }
+		]
+	}]);
+
+    return <RouterProvider router={router} />
 }
 
-export default App
+export default App;
