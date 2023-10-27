@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:17-alpine
 
 WORKDIR /app
 
@@ -9,8 +9,8 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 10000
+EXPOSE 5176
 
 RUN yarn build
 
-CMD [ "yarn", "preview", "--host", "--port",  "10000" ]
+CMD [ "yarn", "dev", "--host", "--port",  "5176" ]
