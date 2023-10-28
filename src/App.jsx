@@ -1,7 +1,7 @@
 import Dashboard from "./Dashboard";
 import Books from "./Books";
 import Analytics from "./Analytics";
-import Login from "./Login";
+import Auth from "./Auth";
 import PageNotFound from "./PageNotFound";
 // import Cookies from "universal-cookie";
 
@@ -11,12 +11,16 @@ import {
   } from "react-router-dom"
 
 import Sidebar from "./components/Sidebar";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 // const cookies = new Cookies();
 
 function App() {
 
-	const router = createBrowserRouter([{
+	let loggedIn = false;
+
+	const router = loggedIn ? createBrowserRouter([{
 		path: "/",
 		element: <Sidebar/>,
 		errorElement: <PageNotFound/>,
@@ -24,6 +28,14 @@ function App() {
 			{ path: "/dashboard", element: <Dashboard/> },
 			{ path: "/books", element: <Books/> },
 			{ path: "/analytics", element: <Analytics/> }
+		]
+	}]) : createBrowserRouter([{
+		path: "/",
+		element: <Auth/>,
+		errorElement: <PageNotFound/>,
+		children: [
+			{ path: "/login", element: <LoginForm/> },
+			{ path: "/register", element: <RegisterForm/> }
 		]
 	}]);
 
