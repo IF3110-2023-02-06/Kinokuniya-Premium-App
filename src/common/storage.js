@@ -8,5 +8,5 @@ export const storage = {
     setToken: (token) => _storage.setItem('token', token),
     removeCreds: () => {
         _storage.removeItem('token')
-    },
+    }
 }

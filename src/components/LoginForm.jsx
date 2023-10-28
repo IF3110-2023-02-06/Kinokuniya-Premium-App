@@ -20,6 +20,7 @@ export default function LoginForm(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        console.log(loginState);
         // TODO: Implement login logic here
         navigate('/dashboard');
     }
@@ -32,7 +33,7 @@ export default function LoginForm(){
                 linkName="Signup"
                 linkUrl="/register"
             />
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="-space-y-px">
                     {
                         fields.map(field=>
