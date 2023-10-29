@@ -3,7 +3,7 @@ import Books from "./Books";
 import Analytics from "./Analytics";
 import Auth from "./Auth";
 import PageNotFound from "./PageNotFound";
-// import Cookies from "universal-cookie";
+import { REST_BASE_URL } from "./common/constants";
 
 import {
 	createBrowserRouter,
@@ -13,14 +13,36 @@ import {
 import Sidebar from "./components/Sidebar";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
-
-// const cookies = new Cookies();
+import { useEffect, useState } from "react";
 
 function App() {
 
-	let loggedIn = false;
+	const [isAuth, setIsAuth] = useState(false);
 
-	const router = loggedIn ? createBrowserRouter([{
+	const checkAuth = async () => {
+		const response = await fetch(`${REST_BASE_URL}/user/check`,
+		{
+		  headers: {
+			"Authorization": localStorage.getItem("token") ?? ""
+		  }
+		});
+	
+		if (!response.ok) {
+		  // Token tidak valid
+		  navigate("/login");
+		} else {
+		  const data = await response.json();
+		  setIsAdmin(data.isAdmin);
+		  setUserID(data.userID);
+		  setIsAuth(true);
+		}
+	  };
+
+	useEffect(() => {
+		checkAuth();
+	}, []);
+
+	const router = isAuth ? createBrowserRouter([{
 		path: "/",
 		element: <Sidebar/>,
 		errorElement: <PageNotFound/>,
