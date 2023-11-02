@@ -1,3 +1,3 @@
-const REST_BASE_URL = "http://localhost:5000/api";
+const REST_BASE_URL = "http://localhost:3000/api";
 
 export { REST_BASE_URL };

@@ -1,6 +1,6 @@
 import { loginFields } from "../common/formFields";
 import Input from "./Input";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormAction from "./FormAction";
 import Header from "./AuthHeader";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function LoginForm() {
 
         // Build JSON data to be sent
         const requestBody = {
-            email: loginState.email,
+            username: loginState.username,
             password: loginState.password
         };
 
