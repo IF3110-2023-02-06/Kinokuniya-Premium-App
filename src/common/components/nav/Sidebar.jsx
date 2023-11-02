@@ -7,12 +7,12 @@ import kinoLogo from "../../../assets/LogoWhite.png"
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
     const Menus = [
-        { title: "Dashboard", component: <RxDashboard className="text-xl"/>, link: "/dashboard" },
-        { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books" },
-        { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics" },
-        { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers" },
-        { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings" },
-        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login" }
+        { title: "Dashboard", component: <RxDashboard className="text-xl"/>, link: "/dashboard", id: 1 },
+        { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books", id: 2 },
+        { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics", id: 3 },
+        { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers", id: 4 },
+        { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings", id: 5 },
+        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login", id: 6 }
     ];
 
     const logout = () => {
@@ -48,27 +48,28 @@ const Sidebar = () => {
             </h1>
             </div>
             <ul className="pt-6">
-            {Menus.map((Menu, index) => (
-                <NavLink to={Menu.link}>
+            {Menus.map((Menu) => (
+                <NavLink to={Menu.link} key={Menu.id}>
                     {
-                        ({isActive}) => 
-                        <li
-                            key={index}
-                            className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center gap-x-4 mt-4 ${isActive ? 'bg-gray-300/10' : ''}`}
-                            onClick={() => {
-                                if (Menu.title === "Log Out") {
-                                    logout();
-                                }
-                            }}
-                        >
-                            {Menu.component}
-                            <span className={`${!open && "hidden"} origin-left duration-400 text-base ease-linear`}>
-                                {Menu.title}
-                            </span>
-                        </li>
+                        ({ isActive }) => (
+                            <li
+                                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center gap-x-4 mt-4 ${isActive ? 'bg-gray-300/10' : ''}`}
+                                onClick={() => {
+                                    if (Menu.title === "Log Out") {
+                                        logout();
+                                    }
+                                }}
+                            >
+                                {Menu.component}
+                                <span className={`${!open && "hidden"} origin-left duration-400 text-base ease-linear`}>
+                                    {Menu.title}
+                                </span>
+                            </li>
+                        )
                     }
                 </NavLink>
             ))}
+
             </ul>
         </aside>
     );
