@@ -1,8 +1,8 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { BiUserCheck, BiSolidChevronLeftCircle, BiLineChart, BiCog, BiBook, BiLogOut } from "react-icons/bi";
 import { RxDashboard } from "react-icons/rx";
-import { NavLink, useNavigate } from "react-router-dom";
-import kinoLogo from "../assets/LogoWhite.png"
+import { NavLink } from "react-router-dom";
+import kinoLogo from "../../../assets/LogoWhite.png"
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
@@ -15,12 +15,9 @@ const Sidebar = () => {
         { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login" }
     ];
 
-    const navigate = useNavigate();
-
     const logout = () => {
         localStorage.removeItem("token");
     }
-    
 
     return (
         <aside

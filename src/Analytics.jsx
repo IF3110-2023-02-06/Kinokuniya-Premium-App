@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Sidebar from './common/components/Sidebar';
+import React from 'react';
 
 const Analytics = () => {
     return (

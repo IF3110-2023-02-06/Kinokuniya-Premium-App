@@ -3,7 +3,6 @@ import Books from "./Books";
 import Analytics from "./Analytics";
 import Subscribers from "./Subscribers";
 import Settings from "./Settings";
-import AuthLayout from "./AuthLayout";
 import PageNotFound from "./PageNotFound";
 
 import {
@@ -11,9 +10,10 @@ import {
 	RouterProvider
   } from "react-router-dom"
 
-import MainLayout from "./common/components/MainLayout";
-import LoginForm from "./common/components/LoginForm";
-import RegisterForm from "./common/components/RegisterForm";
+import MainLayout from "./common/components/layouts/MainLayout";
+import AuthLayout from "./common/components/layouts/AuthLayout";
+import LoginForm from "./common/components/forms/LoginForm";
+import RegisterForm from "./common/components/forms/RegisterForm";
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { REST_BASE_URL } from "./common/constants";
+import { REST_BASE_URL } from "../../constants";
 
 const AuthLayout = () => {
 

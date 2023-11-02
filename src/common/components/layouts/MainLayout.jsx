@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "../nav/Sidebar";
 import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { REST_BASE_URL } from "../constants";
+import { REST_BASE_URL } from "../../constants";
 
 const MainLayout = () => {
 

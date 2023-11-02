@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import kinoLogo from "../assets/LogoWhite.png"
+import kinoLogo from "../../../assets/LogoWhite.png"
 
 export default function Header({
     heading,

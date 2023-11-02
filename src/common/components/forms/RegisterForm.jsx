@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { signupFields } from "../formFields"
+import { signupFields } from "../../formFields"
 import FormAction from "./FormAction";
 import Input from "./Input";
 import Header from './AuthHeader';
 import { useNavigate } from 'react-router-dom';
-import { REST_BASE_URL } from '../constants';
+import { REST_BASE_URL } from '../../constants';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
