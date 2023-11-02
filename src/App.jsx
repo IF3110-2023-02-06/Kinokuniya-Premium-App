@@ -30,7 +30,8 @@ function App() {
 			{ path: "/subscribers", element: <Subscribers/> },
 			{ path: "/settings", element: <Settings/> }
 		]
-	}, {
+	}, 
+	{
 		path: "/",
 		element: <AuthLayout/>,
 		errorElement: <PageNotFound/>,

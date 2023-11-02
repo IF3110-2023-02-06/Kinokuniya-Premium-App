@@ -12,17 +12,15 @@ const Sidebar = () => {
         { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics" },
         { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers" },
         { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings" },
-        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/logout" }
+        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login" }
     ];
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Redirect to dashboard if current path is '/'
-        if (window.location.pathname === '/') {
-            navigate('/dashboard');
-        }
-    });
+    const logout = () => {
+        localStorage.removeItem("token");
+    }
+    
 
     return (
         <aside
@@ -60,6 +58,11 @@ const Sidebar = () => {
                         <li
                             key={index}
                             className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center gap-x-4 mt-4 ${isActive ? 'bg-gray-300/10' : ''}`}
+                            onClick={() => {
+                                if (Menu.title === "Log Out") {
+                                    logout();
+                                }
+                            }}
                         >
                             {Menu.component}
                             <span className={`${!open && "hidden"} origin-left duration-400 text-base ease-linear`}>

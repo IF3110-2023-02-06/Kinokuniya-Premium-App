@@ -1,10 +1,12 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { REST_BASE_URL } from "../common/constants";
 
 const MainLayout = () => {
+
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
@@ -20,11 +22,23 @@ const MainLayout = () => {
 		if (!response.ok) {
 			navigate('/login');
 		}
+
+        setLoading(false);
 	};
+
+    useEffect(() => {
+        if (window.location.pathname === '/') {
+            navigate('/dashboard');
+        }
+    });
 	
 	useEffect(() => {
 		checkAuth();
 	}, []);
+
+    if (loading) return (
+        <div></div>
+    )
 
     return (
         <div className={`flex bg-[#1d1617]`}>
