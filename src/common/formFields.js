@@ -5,7 +5,7 @@ const loginFields=[
         id:"username",
         name:"username",
         type:"text",
-        autoComplete:"username",
+        autoComplete:"current-username",
         isRequired:true,
         placeholder:"Username"   
     },

@@ -5,17 +5,15 @@ import Subscribers from "./Subscribers";
 import Settings from "./Settings";
 import AuthLayout from "./AuthLayout";
 import PageNotFound from "./PageNotFound";
-import { REST_BASE_URL } from "./common/constants";
 
 import {
 	createBrowserRouter,
 	RouterProvider
   } from "react-router-dom"
 
-import MainLayout from "./components/MainLayout";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-import { useEffect, useState } from "react";
+import MainLayout from "./common/components/MainLayout";
+import LoginForm from "./common/components/LoginForm";
+import RegisterForm from "./common/components/RegisterForm";
 
 function App() {
 
