@@ -1,5 +1,5 @@
 export const validateUsername = (username) => {
-    const usernameRegex = /^[a-zA-Z0-9_]+$/;
+    const usernameRegex = /^[a-zA-Z0-9_]+$/; // Alphanumeric and underscore
     return usernameRegex.test(username);
 }
 

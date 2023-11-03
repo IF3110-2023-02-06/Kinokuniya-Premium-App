@@ -1,5 +1,5 @@
 import React from "react";
-import SearchPanel from "./common/components/SearchPanel";
+import SearchPanel from "./common/components/search-filter/SearchPanel";
 
 const Books = () => {
     return (

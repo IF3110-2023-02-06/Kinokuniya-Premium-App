@@ -23,7 +23,7 @@ const Dropdown = ({ items }) => {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []); 
+  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -66,7 +66,6 @@ const Dropdown = ({ items }) => {
           item.toLowerCase().includes(searchTerm) && (
             <a
               key={index}
-              href="#"
               className="block px-4 py-2 text-gray-200 hover:bg-[#5a4943] active:bg-blue-100 cursor-pointer rounded-md"
               onClick={() => handleOptionClick(item)}
             >
