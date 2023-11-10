@@ -27,21 +27,21 @@ const MainLayout = () => {
 	};
 
     useEffect(() => {
+		checkAuth();
+	}, []);
+
+    useEffect(() => {
         if (window.location.pathname === '/') {
             navigate('/dashboard');
         }
     });
-	
-	useEffect(() => {
-		checkAuth();
-	}, []);
 
     if (loading) return (
         <div></div>
     )
 
     return (
-        <div className={`flex bg-gradient-to-r from-[#161C30] to-[#1E1E1E] via-[rgba(35, 48, 74, 0.00)]`}>
+        <div className={`flex bg-gradient-to-r from-[#161C30] to-[#1E1E1E] via-[rgba(35, 48, 74, 0.00)] h-full w-full`}>
             <Sidebar/>
             <Outlet/>
         </div>

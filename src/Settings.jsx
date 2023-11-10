@@ -2,7 +2,7 @@ import React from "react";
 
 const Settings = () => {
     return (
-        <div className="h-screen flex-1 p-8">
+        <div className="h-full w-full flex-1 p-8 min-h-screen">
             <h1 className="text-2xl font-semibold text-white">Settings Page</h1>
             <div>
                 <h1 className="text-xl pt-6 font-semibold text-white">Email</h1>
