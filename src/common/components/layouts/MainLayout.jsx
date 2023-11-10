@@ -41,7 +41,7 @@ const MainLayout = () => {
     )
 
     return (
-        <div className={`flex bg-[#1d1617]`}>
+        <div className={`flex bg-gradient-to-r from-[#161C30] to-[#1E1E1E] via-[rgba(35, 48, 74, 0.00)]`}>
             <Sidebar/>
             <Outlet/>
         </div>

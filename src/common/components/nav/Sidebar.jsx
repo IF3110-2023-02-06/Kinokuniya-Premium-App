@@ -23,9 +23,9 @@ const Sidebar = () => {
         <aside
             className={` ${
             open ? "w-60" : "w-20 "
-            } bg-[#2d1919] h-screen p-5  pt-8 relative duration-500 drop-shadow-xl`}
+            } bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 h-screen p-5  pt-8 relative duration-500 drop-shadow-xl`}
         >
-            <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#912C3C]
+            <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#537aa4]
                 border-2 rounded-full duration-300 ${!open && "rotate-180"}`}
                 onClick={() => setOpen(!open)}>
                 <BiSolidChevronLeftCircle className="text-white text-2xl"/>

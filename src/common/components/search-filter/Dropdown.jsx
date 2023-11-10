@@ -39,11 +39,11 @@ const Dropdown = ({ items }) => {
   };
 
   return (
-    <div className="relative group h-full" ref={dropdownRef}>
+    <div className="relative group h-full z-[3]" ref={dropdownRef}>
       <button
         id="dropdown-button"
         onClick={toggleDropdown}
-        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-[#3f2a22] border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
+        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
       >
         <span className="mr-2 text-gray-300 max-w-xs whitespace-nowrap overflow-hidden overflow-ellipsis">
           {selectedValue || 'Dropdown'}
@@ -52,11 +52,11 @@ const Dropdown = ({ items }) => {
       </button>
       <div
         id="dropdown-menu"
-        className={`absolute right-0 mt-2 rounded-md shadow-lg bg-[#3f2a22] ring-1 ring-black ring-opacity-5 p-1 space-y-1 ${isOpen ? '' : 'hidden'}`}
+        className={`absolute right-0 mt-2 rounded-md shadow-lg bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl ring-1 ring-black ring-opacity-5 p-1 space-y-1 ${isOpen ? '' : 'hidden'}`}
       >
         <input
           id="search-input"
-          className="block bg-[#3b2115] w-full px-4 py-2 text-gray-200 rounded-md focus:outline-none placeholder:text-gray-300 shadow-inner-md text-sm"
+          className="block bg-[#1c2a39] w-full px-4 py-2 text-gray-200 rounded-md focus:outline-none placeholder:text-gray-300 shadow-inner-md text-sm"
           type="text"
           placeholder="Search items"
           autoComplete="off"
@@ -66,7 +66,7 @@ const Dropdown = ({ items }) => {
           item.toLowerCase().includes(searchTerm) && (
             <a
               key={index}
-              className="block px-4 py-2 text-gray-200 hover:bg-[#5a4943] active:bg-blue-100 cursor-pointer rounded-md"
+              className="block px-4 py-2 text-gray-200 hover:bg-gray-300/10 active:bg-blue-100 cursor-pointer rounded-md"
               onClick={() => handleOptionClick(item)}
             >
               {item}
