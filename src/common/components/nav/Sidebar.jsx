@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { BiUserCheck, BiSolidChevronLeftCircle, BiLineChart, BiCog, BiBook, BiLogOut } from "react-icons/bi";
 import { RxDashboard } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
@@ -6,6 +6,8 @@ import kinoLogo from "../../../assets/LogoWhite.png"
 
 const Sidebar = () => {
     const [open, setOpen] = useState(true);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    
     const Menus = [
         { title: "Dashboard", component: <RxDashboard className="text-xl"/>, link: "/dashboard", id: 1 },
         { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books", id: 2 },
@@ -15,6 +17,29 @@ const Sidebar = () => {
         { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login", id: 6 }
     ];
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
+            if (window.innerWidth <= 768) {
+                setOpen(false);
+            } else {
+                setOpen(true);
+            }
+        };
+
+        // Initial check on component mount
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener("resize", handleResize);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []); // Empty dependency array ensures this effect runs only once on mount
+
+
     const logout = () => {
         localStorage.removeItem("token");
     }
@@ -22,11 +47,11 @@ const Sidebar = () => {
     return (
         <aside
             className={` ${
-            open ? "w-60" : "w-20 "
+            open ? "min-w-60" : "w-20 "
             } bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 p-5  pt-8 relative duration-500 drop-shadow-xl`}
         >
             <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#537aa4]
-                border-2 rounded-full duration-300 ${!open && "rotate-180"}`}
+                border-2 rounded-full duration-300 ${!open && "rotate-180"} ${isSmallScreen && "hidden"}`}
                 onClick={() => setOpen(!open)}>
                 <BiSolidChevronLeftCircle className="text-white text-2xl"/>
             </div>

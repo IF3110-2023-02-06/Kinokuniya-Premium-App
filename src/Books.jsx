@@ -91,7 +91,6 @@ const Books = () => {
                                 author={formatAuthorName(book.author)}
                                 bookDesc={formatDesc(book.bookDesc)}
                                 publishedDate={formatDate(book.publicationDate)}
-                                coverImage={`${REST_BASE_URL}/image/${book.coverPath}`}
                             />
                         )
                     }) : <h1 className="text-2xl font-semibold text-white">No books found</h1>
