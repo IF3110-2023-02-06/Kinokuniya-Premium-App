@@ -79,7 +79,7 @@ const Books = () => {
 
     return (
         <div className="h-full w-full flex-1 p-8 min-h-screen">
-            <SearchPanel />
+            <SearchPanel setSearch={setBooks} />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-2 p-4">
                 {
                     books.length > 0 ? books.map((book) => {
