@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Search from './Search';
 import Dropdown from './Dropdown'
 
-function SearchPanel({setSearch}) {
+function SearchPanel({ setSearch, categories }) {
 
-  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4'];
-  const prices = ['< Rp500k', 'Rp500k - Rp1M', '> Rp1M'];
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedValue, setSelectedValue] = useState('All Series');
 
   return (
     <div className="flex justify-center items-center p-4 flex-row gap-x-4">
-        <Search onSearch={setSearch} />
-        <Dropdown items={categories} />
-        <Dropdown items={prices} />
+        <Search onSearch={setSearch} selectedValue={selectedValue} setSearchQuery={setSearchQuery} />
+        <Dropdown items={categories} selectedValue={selectedValue} setSelectedValue={setSelectedValue} searchQuery={searchQuery} onSearch={setSearch} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { REST_BASE_URL } from "./common/constants";
 const Books = () => {
 
     const [books, setBooks] = useState([]);
+    const [series, setSeries] = useState(['All Series']);
     const [loading, setLoading] = useState(true);
 
     function formatDate(isoDate) {
@@ -51,7 +52,8 @@ const Books = () => {
 
     useEffect(() => {
         (async () => {
-            const response = await fetch(`${REST_BASE_URL}/book`, {
+            setLoading(true);
+            const response = await fetch(`${REST_BASE_URL}/book?title=${""}&series=${"All Series"}`, {
                 headers: {
                     "Authorization": localStorage.getItem("token") ?? ""
                 }
@@ -70,16 +72,37 @@ const Books = () => {
         })()
     }, []);
 
+    useEffect(() => {
+        (async () => {
+            setLoading(true);
+            const response = await fetch(`${REST_BASE_URL}/series`, {
+                headers: {
+                    "Authorization": localStorage.getItem("token") ?? ""
+                }
+            });
+
+            if (!response.ok) {
+                console.log(data.message);
+                return;
+            }
+
+            const data = await response.json();
+            const series = data.data;
+
+            series && setSeries(['All Series', ...series.map(s => s.seriesName)]);
+            setLoading(false);
+        })()
+    }, []);
+
     if (loading) return (
         <div className="h-full w-full flex-1 p-8 min-h-screen">
-            <SearchPanel />
             <h1 className="text-2xl font-semibold text-white p-4">Loading...</h1>
         </div>
     )
 
     return (
         <div className="h-full w-full flex-1 p-8 min-h-screen">
-            <SearchPanel setSearch={setBooks} />
+            <SearchPanel setSearch={setBooks} categories={series}/>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-2 p-4">
                 {
                     books.length > 0 ? books.map((book) => {

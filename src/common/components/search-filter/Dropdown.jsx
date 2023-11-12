@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BiChevronDown } from 'react-icons/bi';
+import { REST_BASE_URL } from "../../constants";
 
-const Dropdown = ({ items }) => {
+const Dropdown = ({ items, selectedValue, setSelectedValue, searchQuery, onSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedValue, setSelectedValue] = useState(''); // Added state for the selected value
+  
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -33,9 +34,25 @@ const Dropdown = ({ items }) => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  const handleOptionClick = (item) => {
+  const handleOptionClick = async (item) => {
     setSelectedValue(item);
     setIsOpen(false);
+
+    const response = await fetch(`${REST_BASE_URL}/book?title=${searchQuery}&series=${item}`, {
+        headers: {
+            "Authorization": localStorage.getItem("token") ?? ""
+        }
+    });
+
+    if (!response.ok) {
+        const data = await response.json();
+        console.error(data.message);
+        return;
+    }
+
+    const data = await response.json();
+
+    onSearch(data.data);
   };
 
   return (

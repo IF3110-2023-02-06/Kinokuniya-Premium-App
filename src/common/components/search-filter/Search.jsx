@@ -2,7 +2,7 @@ import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { REST_BASE_URL } from "../../constants";
 
-const Search = ({ onSearch }) => {
+const Search = ({ onSearch, selectedValue, setSearchQuery }) => {
     const debounce = (func, delay) => {
         let debounceTimer;
         return function () {
@@ -18,7 +18,7 @@ const Search = ({ onSearch }) => {
             // Request for books with title containing search query
             const query = e.target.value;
 
-            const response = await fetch(`${REST_BASE_URL}/book?title=${query}`, {
+            const response = await fetch(`${REST_BASE_URL}/book?title=${query}&series=${selectedValue}`, {
                 headers: {
                     "Authorization": localStorage.getItem("token") ?? ""
                 }
@@ -33,6 +33,8 @@ const Search = ({ onSearch }) => {
             const data = await response.json();
 
             onSearch(data.data);
+            setSearchQuery(query);
+
         } catch (error) {
             console.error(error);
         }
