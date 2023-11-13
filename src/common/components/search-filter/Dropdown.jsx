@@ -60,7 +60,7 @@ const Dropdown = ({ items, selectedValue, setSelectedValue, searchQuery, onSearc
       <button
         id="dropdown-button"
         onClick={toggleDropdown}
-        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
+        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 border-none"
       >
         <span className="mr-2 text-gray-300 max-w-xs whitespace-nowrap overflow-hidden overflow-ellipsis">
           {selectedValue || 'Dropdown'}
