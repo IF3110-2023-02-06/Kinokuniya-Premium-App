@@ -8,8 +8,8 @@ const PageNotFound = () => {
           <h1 className="text-6xl font-bold animate-pulse">404</h1>
           <p className="text-2xl mt-4">Page Not Found</p>
           <p className='mt-4 mb-4'>Sorry, the page you are looking for does not exist.</p>
-          <Link to={localStorage.getItem("token") ? "/dashboard" : "/login"} className="text-blue-500 font-semibold hover:text-blue-700 transition-colors duration-300">
-            Go Back to {localStorage.getItem("token") ? "Dashboard" : "Login"}
+          <Link to={localStorage.getItem("token") ? "/books" : "/login"} className="text-blue-500 font-semibold hover:text-blue-700 transition-colors duration-300">
+            Go Back to {localStorage.getItem("token") ? "Application" : "Login"}
           </Link>
         </div>
       </div>

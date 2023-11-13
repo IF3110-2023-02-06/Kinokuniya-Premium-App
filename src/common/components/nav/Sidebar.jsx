@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { BiUserCheck, BiSolidChevronLeftCircle, BiLineChart, BiCog, BiBook, BiLogOut } from "react-icons/bi";
-import { RxDashboard } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 import kinoLogo from "../../../assets/LogoWhite.png"
 
@@ -9,12 +8,11 @@ const Sidebar = () => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     
     const Menus = [
-        { title: "Dashboard", component: <RxDashboard className="text-xl"/>, link: "/dashboard", id: 1 },
-        { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books", id: 2 },
-        { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics", id: 3 },
-        { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers", id: 4 },
-        { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings", id: 5 },
-        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login", id: 6 }
+        { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books", id: 1 },
+        { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics", id: 2 },
+        { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers", id: 3 },
+        { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings", id: 4 },
+        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login", id: 5 }
     ];
 
     useEffect(() => {

@@ -50,7 +50,7 @@ export default function LoginForm() {
         });
         } else {
             localStorage.setItem("token", `Bearer ${data.token}`);
-            navigate("/dashboard");
+            navigate("/books");
         }
     };
 

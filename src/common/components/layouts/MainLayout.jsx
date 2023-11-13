@@ -32,7 +32,7 @@ const MainLayout = () => {
 
     useEffect(() => {
         if (window.location.pathname === '/') {
-            navigate('/dashboard');
+            navigate('/books');
         }
     });
 

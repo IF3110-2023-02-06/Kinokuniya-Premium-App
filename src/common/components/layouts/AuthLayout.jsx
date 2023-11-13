@@ -17,7 +17,7 @@ const AuthLayout = () => {
 
 		
 		if (response.ok) {
-			navigate('/dashboard');
+			navigate('/books');
 		}
 	};
 

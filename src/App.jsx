@@ -1,4 +1,3 @@
-import Dashboard from "./Dashboard";
 import Books from "./Books";
 import Analytics from "./Analytics";
 import Subscribers from "./Subscribers";
@@ -23,7 +22,6 @@ function App() {
 		element: <MainLayout/>,
 		errorElement: <PageNotFound/>,
 		children: [
-			{ path: "/dashboard", element: <Dashboard/> },
 			{ path: "/books", element: <Books/> },
 			{ path: "/analytics", element: <Analytics/> },
 			{ path: "/subscribers", element: <Subscribers/> },
