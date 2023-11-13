@@ -4,6 +4,7 @@ import Analytics from "./Analytics";
 import Subscribers from "./Subscribers";
 import Settings from "./Settings";
 import PageNotFound from "./PageNotFound";
+import AddBook from "./AddBook";
 
 import {
 	createBrowserRouter,
@@ -26,7 +27,8 @@ function App() {
 			{ path: "/books", element: <Books/> },
 			{ path: "/analytics", element: <Analytics/> },
 			{ path: "/subscribers", element: <Subscribers/> },
-			{ path: "/settings", element: <Settings/> }
+			{ path: "/settings", element: <Settings/> },
+			{ path: "/books/add", element: <AddBook/> }
 		]
 	}, 
 	{

@@ -74,4 +74,67 @@ const signupFields=[
     }
 ]
 
-export {loginFields,signupFields}
+const addBookFields=[
+    {
+        labelText:"Title",
+        labelFor:"title",
+        id:"title",
+        name:"title",
+        type:"text",
+        autoComplete:"title",
+        isRequired:true,
+        placeholder:"Title"
+    },
+    {
+        labelText:"Category",
+        labelFor:"category",
+        id:"category",
+        name:"category",
+        type:"text",
+        autoComplete:"category",
+        isRequired:true,
+        placeholder:"Category"
+    },
+    {
+        labelText:"Publication Date",
+        labelFor:"publicationDate",
+        id:"publicationDate",
+        name:"publicationDate",
+        type:"date",
+        autoComplete:"publication-date",
+        isRequired:true,
+        placeholder:"Publication Date"   
+    },
+    {
+        labelText:"Price",
+        labelFor:"price",
+        id:"price",
+        name:"price",
+        type:"number",
+        autoComplete:"price",
+        isRequired:true,
+        placeholder:"Price"
+    },
+    {
+        labelText:"Description",
+        labelFor:"description",
+        id:"description",
+        name:"description",
+        type:"text",
+        autoComplete:"description",
+        isRequired:true,
+        placeholder:"Description"   
+    },
+    {
+        labelText:"Series",
+        labelFor:"series",
+        id:"series",
+        name:"series",
+        type:"text",
+        autoComplete:"series",
+        isRequired:true,
+        placeholder:"Series"
+    }
+]
+
+export {loginFields,signupFields, addBookFields}

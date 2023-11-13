@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function FormAction({
+const FormAction = ({
     handleSubmit,
     type='Button',
     action='submit',
     text
-}){
+}) => {
     return(
         <>
         {
@@ -24,3 +24,5 @@ export default function FormAction({
         </>
     )
 }
+
+export default FormAction;

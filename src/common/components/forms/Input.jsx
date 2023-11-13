@@ -11,11 +11,13 @@ export default function Input({
     isRequired=false,
     placeholder,
     autoComplete="off",
-    customClass
+    customClass,
+    labelClass,
+    accept
 }){
     return(
         <div className="my-5">
-            <label htmlFor={labelFor} className="sr-only">
+            <label htmlFor={labelFor} className={labelClass ? labelClass : "sr-only"}>
               {labelText}
             </label>
             <input
@@ -28,7 +30,8 @@ export default function Input({
               className={fixedInputClass+customClass}
               placeholder={placeholder}
               autoComplete={autoComplete}
+              accept={accept ? accept : ""}
             />
-          </div>
+        </div>
     )
 }
