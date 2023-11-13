@@ -188,15 +188,15 @@ const AddBook = () => {
                                 placeholder={field.placeholder}
                                 autoComplete={field.autoComplete}
 								customClass={"flex w-full h-full px-4 py-3 text-gray-200 rounded-tl-md rounded-bl-md bg-[#2a334e] drop-shadow-xl focus:outline-none placeholder:text-gray-300 text-md border-none text-white"}
-								labelClass={"text-md text-gray-200 my-5"}
+								labelClass={"text-md text-gray-200 my-2"}
 								accept={field.accept}
                             />
                         )
                     }
 					{/* Cover and audio file inputs */}
 					<div className="flex flex-row justify-between">
-						<div className="flex flex-col w-3/4 h-full">
-							<label htmlFor="cover" className="text-md text-gray-200 my-5">
+						<div className="flex flex-col w-full h-full my-2 gap-2">
+							<label htmlFor="cover" className="text-md text-gray-200 my-1">
 								Cover
 							</label>
 							<input
@@ -210,7 +210,7 @@ const AddBook = () => {
 								autoComplete="off"
 								accept=".svg, .png, .jpg, .jpeg"
 							/>
-							<label htmlFor="audio" className="text-md text-gray-200 my-5">
+							<label htmlFor="audio" className="text-md text-gray-200 my-2">
 								Audio
 							</label>
 							<input
