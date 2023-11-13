@@ -9,7 +9,7 @@ const BookCard = (book) => {
             <span
                 className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-[#00486E] via-[#001C41] to-[#431237]"
             ></span>
-            <div className={`flex flex-col items-center`}>
+            <div className={`flex flex-col items-start`}>
 
                 <div className="flex flex-col">
                     <div className="sm:flex sm:justify-between sm:gap-4">
