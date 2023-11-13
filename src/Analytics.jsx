@@ -2,40 +2,80 @@ import React, { useEffect, useState } from 'react';
 import StatCard from './common/components/cards/StatCard';
 import { BiShoppingBag, BiDollar, BiUserCheck, BiBookAlt } from "react-icons/bi";
 import Chart from './common/components/charts/Chart';
+import { REST_BASE_URL } from './common/constants';
 
 const Analytics = () => {
     const [loading, setLoading] = useState(false);
+    const [booksCreated, setBooksCreated] = useState(420);
+    const [totalSubs, setTotalSubs] = useState(69);
+    const [copiesSold, setCopiesSold] = useState(420);
+    const [bookRevenue, setBookRevenue] = useState(420000);
+    const [subRevenue, setSubRevenue] = useState(69000);
+
+    const totalRevenue = bookRevenue + subRevenue;
+
     const [state, setState] = useState({
-        series: [65, 35],
+        chart: [
+            { color: '#10B981', label: 'Book Revenue', value: bookRevenue },
+            { color: '#6577F3', label: 'Subscription', value: subRevenue },
+        ]
     });
 
-    const data = [
-        { color: '#10B981', label: 'Copies Sold', percentage: state.series[0] + '%' },
-        { color: '#6577F3', label: 'Subscription', percentage: state.series[1] + '%' },
-    ];
-
     useEffect(() => {
+        // Initialize the amount of books sold and the amount of subscribers
+        const fetchStats = async () => {
+            setLoading(true);
+            const response = await fetch(REST_BASE_URL + "/analytics", {
+                headers: {
+                    "Authorization": localStorage.getItem("token") ?? ""
+                }
+            });
+
+            if (!response.ok) {
+                return;
+            }
+
+
+            const data = await response.json();
+
+            setBooksCreated(data.data.booksCreated);
+            setTotalSubs(data.data.totalSubs);
+            setCopiesSold(data.data.copiesSold);
+            setBookRevenue(data.data.bookRevenue);
+            setSubRevenue(data.data.subRevenue);
+
+            setState({
+                chart: [
+                    { color: '#10B981', label: 'Book Revenue', value: data.data.bookRevenue },
+                    { color: '#6577F3', label: 'Subscription', value: data.data.subRevenue },
+                ]
+            });
+
+            setLoading(false);
+        }
+
+        fetchStats();
     }, []);
     
     const stats = [
         {
             title: "Total Books Created",
-            value: 200,
+            value: booksCreated,
             icon: <BiBookAlt className="text-2xl text-white" />
         },
         {
             title: "Total Revenue",
-            value: "Rp.200.000",
+            value: totalRevenue,
             icon: <BiDollar className="text-2xl text-white" />
         },
         {
             title: "Total Subscribers",
-            value: 200,
+            value: totalSubs,
             icon: <BiUserCheck className="text-2xl text-white" />
         },
         {
             title: "Copies Sold",
-            value: 200,
+            value: copiesSold,
             icon: <BiShoppingBag className="text-2xl text-white" />
         }
     ];
@@ -45,7 +85,6 @@ const Analytics = () => {
             <div className='h-full w-full flex-1 p-8 min-h-screen'></div>
         )
     }
-
 
     return (
         <div className="h-full w-full flex-1 p-8 min-h-screen">
@@ -62,7 +101,7 @@ const Analytics = () => {
                 }
             </div>
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-                <Chart title="Revenue Streams" state={state} data={data}/>
+                <Chart title="Revenue Streams" state={state}/>
             </div>
         </div>
     );
