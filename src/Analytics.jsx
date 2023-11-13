@@ -3,6 +3,8 @@ import StatCard from './common/components/cards/StatCard';
 import { BiShoppingBag, BiDollar, BiUserCheck, BiBookAlt } from "react-icons/bi";
 import Chart from './common/components/charts/Chart';
 import { REST_BASE_URL } from './common/constants';
+import { useNavigate } from 'react-router';
+import { formatPrice } from './common/formatter';
 
 const Analytics = () => {
     const [loading, setLoading] = useState(false);
@@ -19,6 +21,34 @@ const Analytics = () => {
             { color: '#10B981', label: 'Book Revenue', value: bookRevenue },
             { color: '#6577F3', label: 'Subscription', value: subRevenue },
         ]
+    });
+
+    const navigate = useNavigate();
+
+    const checkAuth = async () => {
+		const response = await fetch(`${REST_BASE_URL}/user/check`,
+		{
+		  headers: {
+			"Authorization": localStorage.getItem("token") ?? ""
+		  }
+		});
+
+		
+		if (!response.ok) {
+			navigate('/login');
+		}
+
+        setLoading(false);
+	};
+
+    useEffect(() => {
+		checkAuth();
+	}, []);
+
+    useEffect(() => {
+        if (window.location.pathname === '/') {
+            navigate('/books');
+        }
     });
 
     useEffect(() => {
@@ -65,7 +95,7 @@ const Analytics = () => {
         },
         {
             title: "Total Revenue",
-            value: totalRevenue,
+            value: formatPrice(totalRevenue),
             icon: <BiDollar className="text-2xl text-white" />
         },
         {

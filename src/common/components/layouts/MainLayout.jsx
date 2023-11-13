@@ -1,8 +1,7 @@
 import React from "react";
 import Sidebar from "../nav/Sidebar";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { REST_BASE_URL } from "../../constants";
 
 const MainLayout = () => {
 
@@ -10,30 +9,14 @@ const MainLayout = () => {
 
     const navigate = useNavigate();
 
-    const checkAuth = async () => {
-		const response = await fetch(`${REST_BASE_URL}/user/check`,
-		{
-		  headers: {
-			"Authorization": localStorage.getItem("token") ?? ""
-		  }
-		});
-
-		
-		if (!response.ok) {
-			navigate('/login');
-		}
-
-        setLoading(false);
-	};
-
-    useEffect(() => {
-		checkAuth();
-	}, []);
-
     useEffect(() => {
         if (window.location.pathname === '/') {
             navigate('/books');
         }
+    });
+
+    useEffect(() => {
+        setLoading(false);
     });
 
     if (loading) return (

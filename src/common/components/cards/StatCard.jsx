@@ -1,5 +1,4 @@
 import React from "react";
-import { BiShoppingBag } from "react-icons/bi";
 
 const StatCard = ({ title, value, icon }) => {
     return (

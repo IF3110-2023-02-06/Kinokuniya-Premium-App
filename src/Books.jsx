@@ -4,12 +4,41 @@ import SearchPanel from "./common/components/search-filter/SearchPanel";
 import BookCard from "./common/components/cards/BookCard";
 import { REST_BASE_URL } from "./common/constants";
 import { formatAuthorName, formatDesc, formatDate, formatPrice } from "./common/formatter";
+import { useNavigate } from "react-router";
 
 const Books = () => {
 
     const [books, setBooks] = useState([]);
     const [series, setSeries] = useState(['All Series']);
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
+
+    const checkAuth = async () => {
+		const response = await fetch(`${REST_BASE_URL}/user/check`,
+		{
+		  headers: {
+			"Authorization": localStorage.getItem("token") ?? ""
+		  }
+		});
+
+		
+		if (!response.ok) {
+			navigate('/login');
+		}
+
+        setLoading(false);
+	};
+
+    useEffect(() => {
+		checkAuth();
+	}, []);
+
+    useEffect(() => {
+        if (window.location.pathname === '/') {
+            navigate('/books');
+        }
+    });
 
     useEffect(() => {
         (async () => {

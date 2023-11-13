@@ -1,6 +1,37 @@
 import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { REST_BASE_URL } from "./common/constants";
 
 const Settings = () => {
+    const navigate = useNavigate();
+
+    const checkAuth = async () => {
+		const response = await fetch(`${REST_BASE_URL}/user/check`,
+		{
+		  headers: {
+			"Authorization": localStorage.getItem("token") ?? ""
+		  }
+		});
+
+		
+		if (!response.ok) {
+			navigate('/login');
+		}
+
+        setLoading(false);
+	};
+
+    useEffect(() => {
+		checkAuth();
+	}, []);
+
+    useEffect(() => {
+        if (window.location.pathname === '/') {
+            navigate('/books');
+        }
+    });
+
     return (
         <div className="h-full w-full flex-1 p-8 min-h-screen">
             <h1 className="text-2xl font-semibold text-white">Settings Page</h1>

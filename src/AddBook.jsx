@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from './common/components/forms/Input';
 import { REST_BASE_URL } from './common/constants';
 import { addBookFields } from './common/formFields';
@@ -23,9 +23,38 @@ fields.forEach((field) => {
   });
 
 const AddBook = () => {
+	const [loading, setLoading] = useState(true);
 	const [addBookState, setAddBookState] = useState(fieldsState);
 	const [cover, setCover] = useState(null);
 	const [audio, setAudio] = useState(null);
+
+	const navigate = useNavigate();
+
+    const checkAuth = async () => {
+		const response = await fetch(`${REST_BASE_URL}/user/check`,
+		{
+		  headers: {
+			"Authorization": localStorage.getItem("token") ?? ""
+		  }
+		});
+
+		
+		if (!response.ok) {
+			navigate('/login');
+		}
+
+        setLoading(false);
+	};
+
+    useEffect(() => {
+		checkAuth();
+	}, []);
+
+    useEffect(() => {
+        if (window.location.pathname === '/') {
+            navigate('/books');
+        }
+    });
 
 	const handleChange = (e) => {
 		setAddBookState({ ...addBookState, [e.target.id]: e.target.value });
@@ -38,8 +67,6 @@ const AddBook = () => {
 	const handleAudioChange = (e) => {
 		setAudio(e.target.files[0]);
 	};
-
-	const navigate = useNavigate();
 
 	const handleBack = () => {
 		navigate('/books');
@@ -159,6 +186,13 @@ const AddBook = () => {
 			});
 			navigate('/books');
 		}
+	}
+
+	if (loading) {
+		return (
+			<div className="h-full w-full flex-1 p-8 min-h-screen">
+			</div>
+		);
 	}
 
 	return (
