@@ -165,7 +165,7 @@ const Settings = () => {
             return;
         }
 
-        toast.success("Settings updated successfully!", {
+        toast.success("Profile updated successfully!", {
             position: "top-center",
             autoClose: 1500,
             hideProgressBar: false,

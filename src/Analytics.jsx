@@ -8,11 +8,11 @@ import { formatPrice } from './common/formatter';
 
 const Analytics = () => {
     const [loading, setLoading] = useState(false);
-    const [booksCreated, setBooksCreated] = useState(420);
-    const [totalSubs, setTotalSubs] = useState(69);
-    const [copiesSold, setCopiesSold] = useState(420);
-    const [bookRevenue, setBookRevenue] = useState(420000);
-    const [subRevenue, setSubRevenue] = useState(69000);
+    const [booksCreated, setBooksCreated] = useState(0);
+    const [totalSubs, setTotalSubs] = useState(0);
+    const [copiesSold, setCopiesSold] = useState(0);
+    const [bookRevenue, setBookRevenue] = useState(0);
+    const [subRevenue, setSubRevenue] = useState(0);
 
     const totalRevenue = bookRevenue + subRevenue;
 

@@ -4,8 +4,7 @@ import { BiUserCheck, BiSolidChevronLeftCircle, BiLineChart, BiCog, BiBook, BiLo
 import { NavLink } from "react-router-dom";
 import kinoLogo from "../../../assets/LogoWhite.png"
 
-const Sidebar = () => {
-    const [open, setOpen] = useState(true);
+const Sidebar = ({open, setOpen}) => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     
     const Menus = [
@@ -18,7 +17,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth <= 768); // Adjust the breakpoint as needed
+            setIsSmallScreen(window.innerWidth <= 768);
             if (window.innerWidth <= 768) {
                 setOpen(false);
             } else {
@@ -45,12 +44,12 @@ const Sidebar = () => {
 
     return (
         <aside
-            className={` ${
-            open ? "min-w-60" : "w-20 "
-            } bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 p-5  pt-8 relative duration-500 drop-shadow-xl`}
+            className={`${
+            open ? "min-w-60" : "w-20"
+            } fixed top-0 left-0 h-full bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 p-5 pt-8 duration-500 drop-shadow-xl`}
         >
             <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#537aa4]
-                border-2 rounded-full duration-300 ${!open && "rotate-180"} ${isSmallScreen && "hidden"}`}
+                border-2 rounded-full duration-500 ${!open && "rotate-180"} ${isSmallScreen && "hidden"}`}
                 onClick={() => setOpen(!open)}>
                 <BiSolidChevronLeftCircle className="text-white text-2xl"/>
             </div>
@@ -64,7 +63,7 @@ const Sidebar = () => {
                 }`}>
             </img>
             <h1
-                className={`text-white origin-left font-bold text-2xl duration-200 font-['Roboto_Slab'] ${
+                className={`text-white origin-left font-bold text-2xl duration-100 font-['Roboto_Slab'] ${
                 !open && "scale-0"
                 }`}
             >
@@ -85,7 +84,7 @@ const Sidebar = () => {
                                 }}
                             >
                                 {Menu.component}
-                                <span className={`${!open && "hidden"} origin-left duration-400 text-base ease-linear`}>
+                                <span className={`${!open && "hidden"} origin-left duration-300 text-base ease-linear`}>
                                     {Menu.title}
                                 </span>
                             </li>
