@@ -221,7 +221,7 @@ const AddBook = () => {
                                 isRequired={field.isRequired}
                                 placeholder={field.placeholder}
                                 autoComplete={field.autoComplete}
-								customClass={"flex w-full h-full px-4 py-3 text-gray-200 rounded-tl-md rounded-bl-md bg-[#2a334e] drop-shadow-xl focus:outline-none placeholder:text-gray-300 text-md border-none text-white"}
+								customClass={"flex w-full h-full px-4 py-3 text-gray-200 rounded-tl-md rounded-bl-md bg-[#222637] drop-shadow-xl focus:outline-none placeholder:text-gray-300 text-md border-none text-white"}
 								labelClass={"text-md text-gray-200 my-2"}
 								accept={field.accept}
                             />
@@ -239,7 +239,7 @@ const AddBook = () => {
 								name="cover"
 								type="file"
 								required={true}
-								className="rounded-md appearance-none relative block w-full px-4 py-3 bg-[#2a334e] border-gray-300 placeholder-gray-500 text-white focus:outline-none focus:ring-[#04d8f9] focus:border-[#04d8f9] focus:z-10 sm:text-sm"
+								className="rounded-md appearance-none relative block w-full px-4 py-3 bg-[#222637] border-gray-300 placeholder-gray-500 text-white focus:outline-none focus:ring-[#04d8f9] focus:border-[#04d8f9] focus:z-10 sm:text-sm"
 								placeholder="Cover"
 								autoComplete="off"
 								accept=".svg, .png, .jpg, .jpeg"
@@ -253,7 +253,7 @@ const AddBook = () => {
 								name="audio"
 								type="file"
 								required={true}
-								className="rounded-md appearance-none relative block w-full px-4 py-3 bg-[#2a334e] placeholder-gray-500 text-white focus:outline-none focus:ring-[#04d8f9] focus:border-[#04d8f9] focus:z-10 sm:text-sm"
+								className="rounded-md appearance-none relative block w-full px-4 py-3 bg-[#222637] placeholder-gray-500 text-white focus:outline-none focus:ring-[#04d8f9] focus:border-[#04d8f9] focus:z-10 sm:text-sm"
 								placeholder="Audio"
 								autoComplete="off"
 								accept=".mp3"

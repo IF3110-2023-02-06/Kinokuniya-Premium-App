@@ -16,7 +16,7 @@ export default function Input({
     accept
 }){
     return(
-        <div className="flex flex-col my-5">
+        <div className="flex flex-col mb-5">
             <label htmlFor={labelFor} className={labelClass ? labelClass : "sr-only"}>
               {labelText}
             </label>

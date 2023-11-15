@@ -207,7 +207,7 @@ const Settings = () => {
                                     isRequired={field.isRequired}
                                     placeholder={field.placeholder}
                                     autoComplete={field.autoComplete}
-                                    customClass={"flex w-full h-full px-4 py-3 text-gray-200 rounded-tl-md rounded-bl-md bg-[#2a334e] drop-shadow-xl focus:outline-none placeholder:text-gray-300 text-md border-none text-white"}
+                                    customClass={"flex w-full h-full px-4 py-3 text-gray-200 rounded-tl-md rounded-bl-md bg-[#222637] drop-shadow-xl focus:outline-none placeholder:text-gray-300 text-md border-none text-white"}
                                     labelClass={"text-md text-gray-200 my-2"}
                                 />
                             )
