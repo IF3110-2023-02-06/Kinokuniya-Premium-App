@@ -86,11 +86,11 @@ const Chart = ({title, state}) => {
             <div className="flex flex-col items-end justify-center gap-y-3 w-full">
             {state.chart.map((item, index) => (
                 <div key={index} className="px-4 sm:w-1/2">
-                <div className="flex items-center justify-end">
-                    <span className={`mr-2 block h-3 w-3 max-w-3 rounded-full bg-[${item.color}]`}></span>
+                <div className="flex items-center justify-end gap-x-1">
+                    <div className={`mb-[1px] mr-2 block h-3 w-3 max-w-3 rounded-full ${item.color}`}></div>
                     <p className="flex w-full justify-between text-sm font-medium text-white lg:w-1/2">
-                    <span>{item.label}</span>
-                    <span>{percentages[index] + "%"}</span>
+                      <div>{item.label}</div>
+                      <div>{percentages[index] + "%"}</div>
                     </p>
                 </div>
                 </div>

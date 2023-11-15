@@ -76,8 +76,8 @@ const Analytics = () => {
 
             setState({
                 chart: [
-                    { color: '#10B981', label: 'Book Revenue', value: data.data.bookRevenue },
-                    { color: '#6577F3', label: 'Subscription', value: data.data.subRevenue },
+                    { color: 'bg-[#10B981]', label: 'Book Revenue', value: data.data.bookRevenue },
+                    { color: 'bg-[#6577F3]', label: 'Subscription', value: data.data.subRevenue },
                 ]
             });
 
