@@ -8,11 +8,11 @@ const Sidebar = ({open, setOpen}) => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     
     const Menus = [
-        { title: "My Books", component: <BiBook className="text-xl"/>, link: "/books", id: 1 },
-        { title: "Analytics", component: <BiLineChart className="text-xl"/>, link: "/analytics", id: 2 },
-        { title: "Subscribers", component: <BiUserCheck className="text-xl"/>, link: "/subscribers", id: 3 },
-        { title: "Settings", component: <BiCog className="text-xl"/>, link: "/settings", id: 4 },
-        { title: "Log Out", component: <BiLogOut className="text-xl"/>, link: "/login", id: 5 }
+        { title: "My Books", component: <BiBook className="text-[18px]"/>, link: "/books", id: 1 },
+        { title: "Analytics", component: <BiLineChart className="text-[18px]"/>, link: "/analytics", id: 2 },
+        { title: "Subscribers", component: <BiUserCheck className="text-[18px]"/>, link: "/subscribers", id: 3 },
+        { title: "Settings", component: <BiCog className="text-[18px]"/>, link: "/settings", id: 4 },
+        { title: "Log Out", component: <BiLogOut className="text-[18px]"/>, link: "/login", id: 5 }
     ];
 
     useEffect(() => {
@@ -45,30 +45,32 @@ const Sidebar = ({open, setOpen}) => {
     return (
         <aside
             className={`${
-            open ? "min-w-60" : "w-20"
-            } fixed top-0 left-0 h-full bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 p-5 pt-8 duration-500 drop-shadow-xl`}
+            open ? "min-w-[248px]" : "w-20"
+            } fixed top-0 left-0 h-full bg-[#11101C]/50 backdrop-filter backdrop-blur-[20px] p-5 pt-8 transition-all duration-500 drop-shadow-xl`}
         >
             <div className={`absolute cursor-pointer -right-3 top-9 border-[#1c2a39] hover:border-[#537aa4]
-                border-2 rounded-full duration-500 ${!open && "rotate-180"} ${isSmallScreen && "hidden"}`}
+                border-2 rounded-full duration-500 ${!open && "hidden"} ${isSmallScreen && "hidden"}`}
                 onClick={() => setOpen(!open)}>
                 <BiSolidChevronLeftCircle className="text-white text-2xl"/>
             </div>
             
-            <div className="flex gap-x-4 items-center">
+            <div className={`flex items-center ${open ? "gap-x-4" : "ml-[2px]"}`}>
 
-            <img
-                src={kinoLogo} 
-                className={`cursor-pointer duration-500 w-8 ${
-                open && "rotate-[360deg]"
-                }`}>
-            </img>
-            <h1
-                className={`text-white origin-left font-bold text-2xl duration-100 font-['Roboto_Slab'] ${
-                !open && "scale-0"
-                }`}
-            >
-                Kinokuniya 
-            </h1>
+                <img
+                    src={kinoLogo} 
+                    className={`cursor-pointer duration-100 w-8 ${
+                    open && "rotate-[360deg]"
+                    }`}
+                    onClick={() => setOpen(!open)}
+                    >
+                </img>
+                <h1
+                    className={`text-white origin-left font-bold text-2xl duration-100 font-['Roboto_Slab'] ${
+                    !open && "opacity-0"
+                    }`}
+                >
+                    Kinokuniya 
+                </h1>
             </div>
             <ul className="pt-6">
             {Menus.map((Menu) => (
@@ -76,7 +78,7 @@ const Sidebar = ({open, setOpen}) => {
                     {
                         ({ isActive }) => (
                             <li
-                                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center gap-x-4 mt-4 ${isActive ? 'bg-gray-300/10' : ''}`}
+                                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-300/10 text-gray-300 text-sm items-center mt-4 ${isActive ? 'bg-gray-300/10' : ''} ${open ? "gap-x-5" : "w-fit mb-[24px]"}`}
                                 onClick={() => {
                                     if (Menu.title === "Log Out") {
                                         logout();
@@ -84,9 +86,9 @@ const Sidebar = ({open, setOpen}) => {
                                 }}
                             >
                                 {Menu.component}
-                                <span className={`${!open && "hidden"} origin-left duration-300 text-base ease-linear`}>
+                                <div className={`${!open && "hidden opacity-0"} origin-left duration-500 text-base text-[18px]`}>
                                     {Menu.title}
-                                </span>
+                                </div>
                             </li>
                         )
                     }

@@ -3,7 +3,7 @@ import React from "react";
 const StatCard = ({ title, value, icon }) => {
     return (
         <div
-            className="relative block overflow-hidden rounded-lg p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-[#2B3242] to-[#161C30] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl border-gray-700 border-[0.5px] hover:scale-105 transition-all duration-100"
+            className="relative block overflow-hidden rounded-lg p-4 sm:p-6 lg:p-8 bg-[#222637] drop-shadow-xl border-gray-700 border-[0.5px] hover:scale-105 transition-all duration-100"
         >
             <span
                 className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-[#00486E] via-[#001C41] to-[#431237]"

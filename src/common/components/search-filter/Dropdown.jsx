@@ -56,20 +56,20 @@ const Dropdown = ({ items, selectedValue, setSelectedValue, searchQuery, onSearc
   };
 
   return (
-    <div className="relative group h-full z-[3]" ref={dropdownRef}>
+    <div className="relative group h-full w-full sm:w-auto sm:justify-between z-[3]" ref={dropdownRef}>
       <button
         id="dropdown-button"
         onClick={toggleDropdown}
-        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 border-none"
+        className="inline-flex justify-center w-full h-full px-4 py-3 text-sm font-medium text-gray-200 bg-[#222637] drop-shadow-xl border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 border-none"
       >
-        <span className="mr-2 text-gray-300 max-w-xs whitespace-nowrap overflow-hidden overflow-ellipsis">
+        <span className="mr-2 text-gray-300 max-w-xs whitespace-nowrap overflow-hidden overflow-ellipsis w-full text-left">
           {selectedValue || 'Dropdown'}
         </span>
         <BiChevronDown className={`w-5 h-5 ml-2 -mr-1 ${isOpen ? 'transform rotate-180' : ''}`} />
       </button>
       <div
         id="dropdown-menu"
-        className={`absolute right-0 mt-2 rounded-md shadow-lg bg-gradient-to-r from-[#2B3242] to-[#2a334e] backdrop-filter backdrop-blur-[20px] bg-opacity-10 drop-shadow-xl ring-1 ring-black ring-opacity-5 p-1 space-y-1 ${isOpen ? '' : 'hidden'}`}
+        className={`w-full sm:w-auto absolute right-0 mt-2 rounded-md shadow-lg bg-[#222637] drop-shadow-xl ring-1 ring-black ring-opacity-5 p-1 space-y-1 ${isOpen ? '' : 'hidden'}`}
       >
         <input
           id="search-input"

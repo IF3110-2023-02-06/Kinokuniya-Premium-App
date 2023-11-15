@@ -9,7 +9,6 @@ const options = {
   labels: ['Book Revenue', 'Subscription'],
   legend: {
     show: true,
-    position: 'bottom',
     horizontalAlign: 'center',
     labels: {
         useSeriesColors: true,
