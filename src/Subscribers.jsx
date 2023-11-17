@@ -5,19 +5,23 @@ import { REST_BASE_URL } from "./common/constants";
 
 const Subscribers = () => {
     const [loading, setLoading] = useState(true);
-    const [pendingSubs, setPendingSubs] = useState({
-        subscriberName: 'cristiano',
+    const [pendingSubs, setPendingSubs] = useState([{
+        subscriberName: 'stricklandmma',
         subscriberID: '1'
     }, {
-        subscriberName: 'therock',
+        subscriberName: 'alexpoatanpereira',
         subscriberID: '2'
-    });
+    }]);
+
     const [subsList, setSubsList] = useState([{
-        subscriberName: 'cristiano',
+        subscriberName: 'danawhite',
         subscriberID: '1'
     }, {
         subscriberName: 'therock',
         subscriberID: '2'
+    }, {
+        subscriberName: 'joerogan',
+        subscriberID: '3'
     }]);
 
     const navigate = useNavigate();
@@ -161,8 +165,8 @@ const Subscribers = () => {
                     <div className="flex flex-col gap-4">
                         <h1 className="text-xl font-semibold text-white px-2">Pending Request</h1>
                         <div className="flex flex-col w-full gap-3">
-                            {pendingSubs.map((subs) => (
-                                <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg">
+                            {pendingSubs.map((subs, index) => (
+                                <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg" key={index}>
                                     <div className="text-white">
                                         <span className="font-bold">@{subs.subscriberName.toLowerCase()}</span> requested to follow you
                                     </div>
@@ -184,8 +188,8 @@ const Subscribers = () => {
                     <div className="flex flex-col gap-4">
                         <h1 className="text-xl font-semibold text-white px-2">Subscribers</h1>
                         <div className="flex flex-col w-full gap-3">
-                            {subsList.map((subs) => (
-                                <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg">
+                            {subsList.map((subs, index) => (
+                                <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg" key={index}>
                                     <div className="text-white">
                                         <span className="font-bold">@{subs.subscriberName.toLowerCase()}</span> is a loyal subscriber
                                     </div>
