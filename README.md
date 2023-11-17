@@ -9,24 +9,24 @@ Kinokuniya premium app is an extension of the Kinokuniya Audiobook app. It is a 
 
 ## Screenshots
 ### Login and Register
-![Login]('screenshots/login.png')
-![Register]('screenshots/register.png')
+![Login](screenshots/login.png)
+![Register](screenshots/register.png)
 
 ### My Books
-![My Books]('screenshots/books.png')
+![My Books](screenshots/books.png)
 
 ### Upload Book
-![Upload Book]('screenshots/addbook.png')
+![Upload Book](screenshots/addbook.png)
 
 ### Analytics
-![Analytics-1]('screenshots/analytics1.png')  
-![Analytics-2]('screenshots/analytics2.png')
+![Analytics-1](screenshots/analytics1.png)  
+![Analytics-2](screenshots/analytics2.png)
 
 ### Subscription
-![Subscription]('screenshots/subs.png')
+![Subscription](screenshots/subs.png)
 
 ### Settings
-![Settings]('screenshots/settings.png')
+![Settings](screenshots/settings.png)
 
 ## Authors
 Page | Name | NIM
