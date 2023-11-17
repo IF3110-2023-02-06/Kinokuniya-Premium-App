@@ -3,7 +3,7 @@ services:
   kino-premium:
     container_name: kino-premium
     hostname: kino-premium
-    build: .
+    image: kino-prem:latest
     env_file: .env
     ports:
       - "5176:5176"
@@ -12,4 +12,6 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+    networks:
+      - kinokuniya-network
     

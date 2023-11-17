@@ -26,7 +26,7 @@ const MainLayout = () => {
     )
 
     return (
-        <div className={`flex bg-gradient-to-r from-[#161C30] to-[#1E1E1E] via-[rgba(35, 48, 74, 0.00)] h-full w-full overflow-hidden`}>
+        <div className={`flex bg-gradient-to-r from-[#161C30] to-[#1E1E1E] via-[rgba(35, 48, 74, 0.00)] overflow-hidden`}>
             <Sidebar open={open} setOpen={setOpen}/>
             <main className={`flex-1 overflow-y-auto w-full transition-all duration-100 ${open ? 'ml-[248px]' : 'ml-20'}`}>
                 <Outlet />

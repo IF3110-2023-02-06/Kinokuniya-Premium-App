@@ -5,8 +5,20 @@ import { REST_BASE_URL } from "./common/constants";
 
 const Subscribers = () => {
     const [loading, setLoading] = useState(true);
-    const [pendingSubs, setPendingSubs] = useState(['cristiano', 'therock']);
-    const [subsList, setSubsList] = useState(['francisngannou', 'thenotoriousmma', 'alexpoatanpereira', 'stricklandmma']);
+    const [pendingSubs, setPendingSubs] = useState({
+        subscriberName: 'cristiano',
+        subscriberID: '1'
+    }, {
+        subscriberName: 'therock',
+        subscriberID: '2'
+    });
+    const [subsList, setSubsList] = useState([{
+        subscriberName: 'cristiano',
+        subscriberID: '1'
+    }, {
+        subscriberName: 'therock',
+        subscriberID: '2'
+    }]);
 
     const navigate = useNavigate();
 
@@ -36,6 +48,106 @@ const Subscribers = () => {
         }
     });
 
+    // Fetch all pending subs
+    const fetchPendingSubs = async () => {
+        setLoading(true);
+
+        const response = await fetch(`${REST_BASE_URL}/subscribe`,
+        {
+            headers: {
+                "Authorization": localStorage.getItem("token") ?? ""
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            
+            setPendingSubs(data.data);
+        } else {
+            console.log(response);
+        }
+
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        fetchPendingSubs();
+    }, []);
+
+    // Fetch all subs
+    const fetchSubs = async () => {
+        setLoading(true);
+
+        const response = await fetch(`${REST_BASE_URL}/subscribe/subscribers`,
+        {
+            headers: {
+                "Authorization": localStorage.getItem("token") ?? ""
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            
+            setSubsList(data.data);
+        } else {
+            console.log(response);
+        }
+
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        fetchSubs();
+    }, []);
+
+    // Handle accept
+    const handleAccept = async (subscriberID) => {
+
+        const response = await fetch(`${REST_BASE_URL}/subscribe/accept`,
+        {
+            method: 'POST',
+            headers: {
+                "Authorization": localStorage.getItem("token") ?? ""
+            },
+            body: JSON.stringify({
+                creatorID: localStorage.getItem("userID") ?? "",
+                subscriberID: subscriberID
+            })
+        });
+
+        if (response.ok) {
+            fetchPendingSubs();
+            fetchSubs();
+        } else {
+            console.log(response);
+        }
+    }
+
+    // Handle reject
+    const handleReject = async (subscriberID) => {
+
+        const response = await fetch(`${REST_BASE_URL}/subscribe/reject`,
+
+        {
+            method: 'POST',
+            headers: {
+                "Authorization": localStorage.getItem("token") ?? ""
+            },
+            body: JSON.stringify({
+                creatorID: localStorage.getItem("userID") ?? "",
+                subscriberID: subscriberID
+            })
+        });
+
+        if (response.ok) {
+            fetchPendingSubs();
+            fetchSubs();
+        } else {
+            console.log(response);
+        }
+
+    }
+
     if (loading) {
         return (
             <div className="h-full w-full flex-1 p-8 min-h-screen"></div>
@@ -52,13 +164,13 @@ const Subscribers = () => {
                             {pendingSubs.map((subs) => (
                                 <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg">
                                     <div className="text-white">
-                                        <span className="font-bold">@{subs.toLowerCase()}</span> requested to follow you
+                                        <span className="font-bold">@{subs.subscriberName.toLowerCase()}</span> requested to follow you
                                     </div>
                                     <div className="flex gap-4">
-                                        <button className="flex items-center justify-center rounded-lg bg-[#66acff] shadow-sm text-md text-white py-2 px-5 my-1 border-none">
+                                        <button onClick={handleAccept(subs.subscriberID)} className="flex items-center justify-center rounded-lg bg-[#66acff] shadow-sm text-md text-white py-2 px-5 my-1 border-none">
                                             Accept
                                         </button>
-                                        <button className="flex items-center justify-center rounded-lg shadow-sm text-md text-white py-2 px-5 my-1 border border-gray-400 hover:border-red-500 hover:text-red-500">
+                                        <button onClick={handleReject(subs.subscriberID)} className="flex items-center justify-center rounded-lg shadow-sm text-md text-white py-2 px-5 my-1 border border-gray-400 hover:border-red-500 hover:text-red-500">
                                             Reject
                                         </button>
                                     </div>
@@ -75,7 +187,7 @@ const Subscribers = () => {
                             {subsList.map((subs) => (
                                 <div className="flex bg-[#222637] w-full px-6 py-3 justify-between items-center rounded-lg">
                                     <div className="text-white">
-                                        <span className="font-bold">@{subs.toLowerCase()}</span> is a loyal subscriber
+                                        <span className="font-bold">@{subs.subscriberName.toLowerCase()}</span> is a loyal subscriber
                                     </div>
                                     <button className="flex items-center justify-center rounded-lg shadow-sm text-md text-white py-2 px-5 my-1 border border-gray-400 hover:border-red-500 hover:text-red-500">
                                         Remove
