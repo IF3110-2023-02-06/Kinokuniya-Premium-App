@@ -8,6 +8,9 @@ Kinokuniya premium app is an extension of the Kinokuniya Audiobook app. It is a 
 3. Go to the config repository and run the command `docker-compose up -d`
 
 ## Screenshots
+### Login and Register
+![Login]('./screenshots/login.png')
+![Register]('./screenshots/register.png')
 ### My Books
 ![My Books]('./screenshots/books.png')
 ### Upload Book
@@ -23,6 +26,8 @@ Kinokuniya premium app is an extension of the Kinokuniya Audiobook app. It is a 
 ## Authors
 Page | Name | NIM
 --- | --- | ---
+Login | Enrique Alifio Ditya | 13521142
+Register | Enrique Alifio Ditya | 13521142
 My Books | Enrique Alifio Ditya | 13521142
 Upload Book | Enrique Alifio Ditya | 13521142
 Analytics | Enrique Alifio Ditya | 13521142
