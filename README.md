@@ -27,4 +27,4 @@ My Books | Enrique Alifio Ditya | 13521142
 Upload Book | Enrique Alifio Ditya | 13521142
 Analytics | Enrique Alifio Ditya | 13521142
 Subscription | Enrique Alifio Ditya | 13521142
-Settings | Enrique Alifio Ditya | 13521142
+Settings | Enrique Alifio Ditya</br>Ezra MCMH | 13521142</br>13521073
